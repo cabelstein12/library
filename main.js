@@ -1,5 +1,19 @@
 const myLibrary = [];
 
+let grapesOfWrath = new Book('The Grapes of Wrath', 'John Steinbeck', 'Fiction', 'Read');
+let creativityInc = new Book('Creativity Inc.', 'Ed Catmull', 'Non-Fiction', 'Read');
+let snowCrash = new Book('Snow Crash', 'Neil Stephenson', 'Fiction', 'Read');
+let lawsOfPower = new Book('48 Laws of Power', 'Robert Greene', 'Non-Fiction', 'Unread');
+
+myLibrary.push(grapesOfWrath);
+myLibrary.push(creativityInc);
+myLibrary.push(snowCrash);
+myLibrary.push(lawsOfPower);
+
+myLibrary.forEach(( _,index) => {
+    addBookToSidebar(index);
+})
+
 function Book(title, author, genre, status){
     this.title = title;
     this.author = author;
@@ -12,7 +26,7 @@ function submitForm(e){
 
     const bookForm = document.getElementById('book-form');
     const bookData = new FormData(bookForm);
-    const newBook = {
+    const newBook = { //make new book obj with key value pairs of form input
          title : bookData.get('title'),
          author : bookData.get('author'),
          genre : bookData.get('genre'),
@@ -29,11 +43,9 @@ function addBookToSidebar(num){
     const bookLink = document.createElement('a');
     bookLink.href = '#';
     bookLink.textContent = myLibrary[num].title;
-    
     bookLink.addEventListener('click', function () {
         createBookModal(num);
     });
-    
     newBook.append(bookLink);
     bookList.appendChild(newBook);
 }
@@ -44,6 +56,7 @@ function createBookModal(index){
     let modalText = document.createElement('p');
     let closeButton = document.createElement('button');
     let deleteButton = document.createElement('button');
+    const bookInfoElement = displayBookInfo(index);
 
     closeButton.textContent='X';
     closeButton.classList.add('close-button');
@@ -51,35 +64,66 @@ function createBookModal(index){
 
     deleteButton.textContent = 'Remove Book';
     deleteButton.classList.add('delete-button');
-    deleteButton.addEventListener('click', deleteBook);
+    deleteButton.addEventListener('click', function() {
+        deleteBook(index);
+    });
     deleteButton.addEventListener('click', closeModal)
 
-    modalText.innerHTML = displayBookInfo(index);
     modalBody.classList.add('modal');
     modalBody.setAttribute('id', index);
-
+    
+    modalText.appendChild(bookInfoElement);
     modalBody.append(closeButton);
     modalBody.append(modalText);
     modalBody.append(deleteButton);
     document.body.append(modalBody);
 }
 
-function closeModal(){
+function closeModal(event){
+
     let index = event.currentTarget.parentElement.getAttribute('id')
     let modalBody = document.getElementById(index);
-    modalBody.style.display = 'none';
+    modalBody.remove();
 }
 
+function generateBookElement(book) {
+    console.log(book)
+    const bookContainer = document.createElement('div');
+    
+    const titleParagraph = document.createElement('p');
+    titleParagraph.classList.add('modal-text');
+    titleParagraph.textContent = 'Title: ' + book.title;
 
-function displayBookInfo(index){
-    return `
-            <div>
-                <p class='modal-text'>Title: ${myLibrary[index].title}</p>
-                <p class='modal-text'>Author: ${myLibrary[index].author}</p>
-                <p class='modal-text'>Genre: ${myLibrary[index].genre}</p>
-                <p class='modal-text'>Status: ${myLibrary[index].status}</p>
-            </div>
-            `
+    const authorParagraph = document.createElement('p');
+    authorParagraph.classList.add('modal-text');
+    authorParagraph.textContent = 'Author: ' + book.author;
+
+    const genreParagraph = document.createElement('p');
+    genreParagraph.classList.add('modal-text');
+    genreParagraph.textContent = 'Genre: ' + book.genre;
+
+    const statusParagraph = document.createElement('p');
+    statusParagraph.classList.add('modal-text', 'status');
+    statusParagraph.textContent = 'Status: '
+    const statusLink = document.createElement('a');
+    statusLink.href = '#';
+    statusLink.textContent = book.status;
+    statusLink.addEventListener('click', function(){
+        toggleReadStatus();
+    })
+    statusParagraph.appendChild(statusLink);
+
+    bookContainer.appendChild(titleParagraph);
+    bookContainer.appendChild(authorParagraph);
+    bookContainer.appendChild(genreParagraph);
+    bookContainer.appendChild(statusParagraph);
+
+    return bookContainer;
+}
+
+function displayBookInfo(index) {
+    const bookElement = generateBookElement(myLibrary[index]);
+    return bookElement;
 }
 
 function deleteBook(index){
