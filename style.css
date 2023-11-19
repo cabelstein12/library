@@ -60,7 +60,7 @@ body{
     display: grid;
     height: 100vh;
     width: 100vw;
-    grid-template-columns: 1fr 2fr 2fr;
+    grid-template-columns: max(20vw, 300px) 3fr ;
     grid-template-rows: 1fr 2fr 1fr;
     justify-content: center;
     align-content: center;
@@ -74,11 +74,11 @@ body{
     grid-row-start: 2;
     grid-column-start: 2;
     border: 1px solid black;
-    width: min-content;
+    width: max-content;
     height: min-content;
     border-radius: 5px;
     padding: 5px;
-    justify-self: end;
+    justify-self: center;
     box-shadow: var(--box-shadow);
     background-color: whitesmoke;
     display: flex;
@@ -118,6 +118,17 @@ legend{
     margin: 5px;
     box-shadow: var(--box-shadow);
     background-color: whitesmoke;
+    min-width: 245px;
+}
+
+li > a {
+    color: rgb(31, 31, 31);
+    text-decoration: none;
+}
+
+li > a:hover{
+    color: rgb(0, 0, 0);
+    text-decoration: underline;
 }
 
 .book-list-header{
@@ -168,3 +179,15 @@ button {
     padding: 10px;
     margin: 5px;
 }
+
+.photo-credit,
+.photo-credit a{
+    color: whitesmoke;
+    bottom: 10%;
+    width: max-content;
+    height: min-content;
+    grid-row-start: 3;
+    align-self: end;
+    justify-self: center;
+}
+

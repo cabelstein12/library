@@ -56,6 +56,7 @@ function createBookModal(index){
 
     modalText.innerHTML = displayBookInfo(index);
     modalBody.classList.add('modal');
+    modalBody.setAttribute('id', index);
 
     modalBody.append(closeButton);
     modalBody.append(modalText);
@@ -64,7 +65,8 @@ function createBookModal(index){
 }
 
 function closeModal(){
-    let modalBody = document.querySelector('.modal');
+    let index = event.currentTarget.parentElement.getAttribute('id')
+    let modalBody = document.getElementById(index);
     modalBody.style.display = 'none';
 }
 
