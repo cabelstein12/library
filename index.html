@@ -9,23 +9,23 @@
 </head>
 <body>
     <div class="new-book-container">
-        <form action="" method="get">
+        <form action="#" method="POST" id="book-form">
             <fieldset class="new-book">
-                <legend>Add Book</legend>
+                <legend><h1>Add Book</h1></legend>
                     <label for="title">Book Title:</label>
                     <input type="text" name="title" id="title" required>
 
                     <label for="author">Author:</label>
-                    <input type="text" name="author" id="author" required>
+                    <input type="text" name="author" id="author"  required>
 
                     <label for="genre">Genre:</label>
                     <input type="text" name="genre" id="genre">
                     <div id="status">Book Status:</div>
                     
                     <div class="status-container">
-                    <input type="radio" name="status" id="read" value="read">
+                    <input type="radio" name="status" id="read" value="Read">
                     <label for="read">Read</label>
-                    <input type="radio" name="status" id="unread" value="unread">
+                    <input type="radio" name="status" id="unread" value="Uread">
                     <label for="unread">Unread</label>
                 </div>
                 <button type="submit">Add Book</button>  
@@ -34,7 +34,7 @@
 
     </div>
     <div class="side-bar">
-        <h2 class="book-list-header">Book List</h2>
+        <h1 class="book-list-header">Book List</h1>
         <ul class="book-list"></ul>
     </div>
     

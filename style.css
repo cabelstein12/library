@@ -3,6 +3,10 @@
    License: none (public domain)
 */
 
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;600&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap'); */
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -49,6 +53,7 @@ table {
 
 :root{
     --box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.596);
+    font-family: 'Montserrat', sans-serif;
 }
 
 body{
@@ -59,6 +64,10 @@ body{
     grid-template-rows: 1fr 2fr 1fr;
     justify-content: center;
     align-content: center;
+    background-image: url(zaini-izzuddin-55btQzyDiO8-unsplash.jpg);
+    background-position: center;
+    
+
 }
 
 .new-book-container{
@@ -68,28 +77,34 @@ body{
     width: min-content;
     height: min-content;
     border-radius: 5px;
-    padding: 20px;
+    padding: 5px;
     justify-self: end;
     box-shadow: var(--box-shadow);
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: row;
+}
+
+
+h1{
+    font-weight: 600;
+    text-decoration: underline;
 }
 
 .new-book{
     display: flex;
     flex-direction: column;
     justify-content: center;
+    gap: 12px;
     align-items: center;
     padding: 15px;
-    margin: 20px;
+    margin: 20px 20px 0px 20px;
 }
 
 legend{
     text-align: center;
 }
 
-.new-book > *{
-    margin: 5px 0px;
-    z-index: 0;
-}
 
 .new-book > label,
 #status {
@@ -102,6 +117,7 @@ legend{
     grid-row: 1/4;
     margin: 5px;
     box-shadow: var(--box-shadow);
+    background-color: whitesmoke;
 }
 
 .book-list-header{
@@ -124,11 +140,13 @@ li {
     box-shadow: var(--box-shadow);
     z-index: 1;
     /* display: none; */
-    position: fixed;
+    position:relative;
     z-index: 1;
     top: 1%;
     left: 25%;
-    background-color: blanchedalmond;
+    background-color: whitesmoke;
+    width: 250px;
+    height: 150px;
 }
 
 .modal-text {
@@ -137,4 +155,16 @@ li {
     
 }
 
+.close-button{
+    float: right;
+}
 
+.modal-hide{
+    display: none;
+}
+
+
+button {
+    padding: 10px;
+    margin: 5px;
+}
