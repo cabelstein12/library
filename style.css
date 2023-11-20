@@ -57,7 +57,7 @@ body{
     display: grid;
     height: 100vh;
     width: 100vw;
-    grid-template-columns: 1fr 2fr 2fr;
+    grid-template-columns: 1fr 2fr;
     grid-template-rows: 1fr 2fr 1fr;
     justify-content: center;
     align-content: center;
@@ -66,14 +66,17 @@ body{
 }
 
 .new-book-container{
+    position: absolute;
+    top: 25%;
+    left: 45%;
     grid-row-start: 2;
     grid-column-start: 2;
     border: 1px solid black;
-    width: min-content;
+    width: max-content;
     height: min-content;
     border-radius: 5px;
     padding: 5px;
-    justify-self: end;
+    justify-self: center;
     box-shadow: var(--box-shadow);
     background-color: whitesmoke;
     display: flex;
@@ -109,6 +112,7 @@ legend{
     border-radius: 5px;
     grid-row: 1/4;
     margin: 5px;
+    width: max(20vw, 200px);
     box-shadow: var(--box-shadow);
     background-color: whitesmoke;
 }
