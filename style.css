@@ -2,10 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
-
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;600&display=swap');
-/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap'); */
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -60,31 +57,28 @@ body{
     display: grid;
     height: 100vh;
     width: 100vw;
-    grid-template-columns: max(20vw, 300px) 3fr ;
+    grid-template-columns: 1fr 2fr 2fr;
     grid-template-rows: 1fr 2fr 1fr;
     justify-content: center;
     align-content: center;
     background-image: url(zaini-izzuddin-55btQzyDiO8-unsplash.jpg);
     background-position: center;
-    
-
 }
 
 .new-book-container{
     grid-row-start: 2;
     grid-column-start: 2;
     border: 1px solid black;
-    width: max-content;
+    width: min-content;
     height: min-content;
     border-radius: 5px;
     padding: 5px;
-    justify-self: center;
+    justify-self: end;
     box-shadow: var(--box-shadow);
     background-color: whitesmoke;
     display: flex;
     flex-direction: row;
 }
-
 
 h1{
     font-weight: 600;
@@ -105,7 +99,6 @@ legend{
     text-align: center;
 }
 
-
 .new-book > label,
 #status {
     align-self: start;
@@ -118,17 +111,6 @@ legend{
     margin: 5px;
     box-shadow: var(--box-shadow);
     background-color: whitesmoke;
-    min-width: 245px;
-}
-
-li > a {
-    color: rgb(31, 31, 31);
-    text-decoration: none;
-}
-
-li > a:hover{
-    color: rgb(0, 0, 0);
-    text-decoration: underline;
 }
 
 .book-list-header{
@@ -142,15 +124,12 @@ li {
 
 .modal{
     border: 1px solid black;
-    /* text-align: center; */
-    /* display: flex; */
     justify-content: center;
     align-items: center;
     margin: 5px 15px;
     border-radius: 5px;
     box-shadow: var(--box-shadow);
     z-index: 1;
-    /* display: none; */
     position:relative;
     z-index: 1;
     top: 1%;
@@ -162,8 +141,7 @@ li {
 
 .modal-text {
     margin: 5px;
-    padding: 5px;
-    
+    padding: 5px;   
 }
 
 .close-button{
@@ -174,20 +152,7 @@ li {
     display: none;
 }
 
-
 button {
     padding: 10px;
     margin: 5px;
 }
-
-.photo-credit,
-.photo-credit a{
-    color: whitesmoke;
-    bottom: 10%;
-    width: max-content;
-    height: min-content;
-    grid-row-start: 3;
-    align-self: end;
-    justify-self: center;
-}
-

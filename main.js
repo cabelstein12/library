@@ -23,7 +23,6 @@ function Book(title, author, genre, status){
 
 function submitForm(e){
     e.preventDefault();
-
     const bookForm = document.getElementById('book-form');
     const bookData = new FormData(bookForm);
     const newBook = { //make new book obj with key value pairs of form input
@@ -64,14 +63,14 @@ function createBookModal(index){
 
     deleteButton.textContent = 'Remove Book';
     deleteButton.classList.add('delete-button');
-    deleteButton.addEventListener('click', function() {
-        deleteBook(index);
-    });
     deleteButton.addEventListener('click', closeModal)
+    deleteButton.addEventListener('click', function() {
+        deleteBook(index);    
+    });
 
     modalBody.classList.add('modal');
     modalBody.setAttribute('id', index);
-    
+
     modalText.appendChild(bookInfoElement);
     modalBody.append(closeButton);
     modalBody.append(modalText);
@@ -80,14 +79,12 @@ function createBookModal(index){
 }
 
 function closeModal(event){
-
-    let index = event.currentTarget.parentElement.getAttribute('id')
+    let index = event.currentTarget.parentElement.getAttribute('id');
     let modalBody = document.getElementById(index);
     modalBody.remove();
 }
 
-function generateBookElement(book) {
-    console.log(book)
+function generateBookElement(book, index) {
     const bookContainer = document.createElement('div');
     
     const titleParagraph = document.createElement('p');
@@ -106,10 +103,11 @@ function generateBookElement(book) {
     statusParagraph.classList.add('modal-text', 'status');
     statusParagraph.textContent = 'Status: '
     const statusLink = document.createElement('a');
+    statusLink.setAttribute('id', `status${index}`)
     statusLink.href = '#';
     statusLink.textContent = book.status;
     statusLink.addEventListener('click', function(){
-        toggleReadStatus();
+        toggleReadStatus(index);
     })
     statusParagraph.appendChild(statusLink);
 
@@ -122,7 +120,7 @@ function generateBookElement(book) {
 }
 
 function displayBookInfo(index) {
-    const bookElement = generateBookElement(myLibrary[index]);
+    const bookElement = generateBookElement(myLibrary[index], index);
     return bookElement;
 }
 
@@ -140,14 +138,15 @@ function updateBookList(){
     }
 }
 
-function toggleReadStatus(num){
-    if(myLibrary[num].status === 'Read'){
-        myLibrary[num].status = 'Unread';
+function toggleReadStatus(index){
+    if(myLibrary[index].status === 'Read'){
+        myLibrary[index].status = 'Unread';
     } else {
-        myLibrary[num].status = 'Read';
+        myLibrary[index].status = 'Read';
     }
-    closeModal();
-    createBookModal(num);
+    let statusLink = document.getElementById(index)
+    statusLink.remove();
+    createBookModal(index);
 }
 
 const bookForm = document.getElementById('book-form');
