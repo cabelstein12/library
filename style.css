@@ -190,16 +190,20 @@ span {
 }
 
 .credits{
-    position: absolute;
-    left: 45%;
-    top: 5%;
-    width: 237px;
-    text-align: center;
+    position: relative;
+    left: 41%;
 
-    /* left: 59%;; */
+    width: 289px;
+    text-align: center;
+    margin: 0 auto;
 }
 
 .credits,
 .credits a {
     color: white;
+}
+
+.credits a::before{
+    background-image: linear-gradient(90deg, white, white);
+    background-position: left bottom;
 }
