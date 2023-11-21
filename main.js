@@ -46,8 +46,9 @@ function addBookToSidebar(index){
     bookLink.textContent = myLibrary[index].title;
     bookLink.addEventListener('click', () => {
         addBookInfo(index);
-        // getClass();
-        card.classList.toggle('card-rotate');
+        if( document.querySelector('.card').classList.value !== 'card card-rotate'){
+            card.classList.toggle('card-rotate');
+        }
     });
     
     newBook.append(bookLink);
@@ -75,8 +76,8 @@ function addBookInfo(index) {
         setTimeout(() => {
             document.querySelector('.card').classList.toggle('card-rotate');
         }, "600");
-
     })
+   
     
     
 }

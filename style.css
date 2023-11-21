@@ -127,6 +127,10 @@ legend{
     padding: 15px 0px;
 }
 
+ul{
+    list-style-type:circle;
+}
+
 li {
     text-align: center;
     padding: 0.4em;
