@@ -188,3 +188,18 @@ span {
     padding: 0;
     margin: 0;
 }
+
+.credits{
+    position: absolute;
+    left: 45%;
+    top: 5%;
+    width: 237px;
+    text-align: center;
+
+    /* left: 59%;; */
+}
+
+.credits,
+.credits a {
+    color: white;
+}
