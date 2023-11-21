@@ -36,92 +36,37 @@ function submitForm(e){
     bookForm.reset();
 }
 
-function addBookToSidebar(num){
+function addBookToSidebar(index){
+    const card = document.querySelector('.card');
     const bookList = document.querySelector('.book-list');
     const newBook = document.createElement('li');
     const bookLink = document.createElement('a');
+    bookLink.setAttribute('id', index)
     bookLink.href = '#';
-    bookLink.textContent = myLibrary[num].title;
-    bookLink.addEventListener('click', function () {
-        createBookModal(num);
+    bookLink.textContent = myLibrary[index].title;
+    bookLink.addEventListener('click', () => {
+        addBookInfo(index);
+        card.classList.toggle('card-rotate');
     });
+    
     newBook.append(bookLink);
     bookList.appendChild(newBook);
 }
 
+document.querySelector('.add-new-book').addEventListener('click', () => {
+    document.querySelector('.card').classList.toggle('card-rotate');
+})
 
-function createBookModal(index){
-    let modalBody = document.createElement('div');
-    let modalText = document.createElement('p');
-    let closeButton = document.createElement('button');
-    let deleteButton = document.createElement('button');
-    const bookInfoElement = displayBookInfo(index);
+function addBookInfo(index) {
+    const title = document.querySelector('.book-title');
+    const author = document.querySelector('.book-author');
+    const genre = document.querySelector('.book-genre');
+    const status = document.querySelector('.book-status');
 
-    closeButton.textContent='X';
-    closeButton.classList.add('close-button');
-    closeButton.addEventListener('click', closeModal)
-
-    deleteButton.textContent = 'Remove Book';
-    deleteButton.classList.add('delete-button');
-    deleteButton.addEventListener('click', closeModal)
-    deleteButton.addEventListener('click', function() {
-        deleteBook(index);    
-    });
-
-    modalBody.classList.add('modal');
-    modalBody.setAttribute('id', index);
-
-    modalText.appendChild(bookInfoElement);
-    modalBody.append(closeButton);
-    modalBody.append(modalText);
-    modalBody.append(deleteButton);
-    document.body.append(modalBody);
-}
-
-function closeModal(event){
-    let index = event.currentTarget.parentElement.getAttribute('id');
-    let modalBody = document.getElementById(index);
-    modalBody.remove();
-}
-
-function generateBookElement(book, index) {
-    const bookContainer = document.createElement('div');
-    
-    const titleParagraph = document.createElement('p');
-    titleParagraph.classList.add('modal-text');
-    titleParagraph.textContent = 'Title: ' + book.title;
-
-    const authorParagraph = document.createElement('p');
-    authorParagraph.classList.add('modal-text');
-    authorParagraph.textContent = 'Author: ' + book.author;
-
-    const genreParagraph = document.createElement('p');
-    genreParagraph.classList.add('modal-text');
-    genreParagraph.textContent = 'Genre: ' + book.genre;
-
-    const statusParagraph = document.createElement('p');
-    statusParagraph.classList.add('modal-text', 'status');
-    statusParagraph.textContent = 'Status: '
-    const statusLink = document.createElement('a');
-    statusLink.setAttribute('id', `status${index}`)
-    statusLink.href = '#';
-    statusLink.textContent = book.status;
-    statusLink.addEventListener('click', function(){
-        toggleReadStatus(index);
-    })
-    statusParagraph.appendChild(statusLink);
-
-    bookContainer.appendChild(titleParagraph);
-    bookContainer.appendChild(authorParagraph);
-    bookContainer.appendChild(genreParagraph);
-    bookContainer.appendChild(statusParagraph);
-
-    return bookContainer;
-}
-
-function displayBookInfo(index) {
-    const bookElement = generateBookElement(myLibrary[index], index);
-    return bookElement;
+    title.textContent = `Title: ${myLibrary[index].title}`;
+    author.textContent = `Author: ${myLibrary[index].author}`;
+    genre.textContent = `Genre: ${myLibrary[index].genre}`;
+    status.textContent = `Status: ${myLibrary[index].status}`;
 }
 
 function deleteBook(index){

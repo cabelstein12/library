@@ -1,82 +1,83 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;600&display=swap');
 
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
 :root{
-    --box-shadow: 5px 5px 5px rgba(128, 128, 128, 0.596);
+    --box-shadow: 5px 5px 5px 2px rgba(90, 90, 90, 0.713);
     font-family: 'Montserrat', sans-serif;
 }
 
 body{
-    display: grid;
-    height: 100vh;
-    width: 100vw;
-    grid-template-columns: 1fr 2fr;
-    grid-template-rows: 1fr 2fr 1fr;
-    justify-content: center;
-    align-content: center;
     background-image: url(zaini-izzuddin-55btQzyDiO8-unsplash.jpg);
     background-position: center;
 }
 
-.new-book-container{
+.container {
+    height: 25em;
+    width: 18.75em;
     position: absolute;
-    top: 25%;
-    left: 45%;
-    grid-row-start: 2;
-    grid-column-start: 2;
-    border: 1px solid black;
-    width: max-content;
-    height: min-content;
-    border-radius: 5px;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left:50%;
+    perspective: 37.5em;
+}
+
+.card {
+    height: inherit;
+    width: inherit;
+    transform-style: preserve-3d;
+    transition: 1s;
+}
+
+.card-rotate{
+    transform: rotateY(180deg);
+}
+
+
+.front, 
+.back {
+    background-color: #ffffff;
+    height: inherit;
+    width: inherit;
+    position: absolute;
+    border-radius: 1em;
+    backface-visibility: hidden;
+}
+
+.front img{
+    display: block;
+    margin: auto;
+    width: 14.37em;
+    border-radius: 1em;
+    margin: 2em auto 2em auto;
+}
+
+.back {
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px 15px 15px 15px;
+}
+
+.back button,
+.front button {
+    width: 12.5em;
+    font-size: 1em;
+    background-color: #0961cc;
+    color: #ffffff;
+    border-radius: 0.5em;
+    padding: 1em;
+    cursor: pointer;
+    border: none;
+    outline: none;
+  }
+.new-book-container{
     padding: 5px;
-    justify-self: center;
     box-shadow: var(--box-shadow);
     background-color: whitesmoke;
     display: flex;
@@ -85,7 +86,10 @@ body{
 
 h1{
     font-weight: 600;
-    text-decoration: underline;
+}
+
+input[type=text] {
+    width: 210px;
 }
 
 .new-book{
@@ -108,9 +112,10 @@ legend{
 }
 
 .side-bar{
-    border: 1px solid black;
+
     border-radius: 5px;
-    grid-row: 1/4;
+    position: absolute;
+    height: 99vh;
     margin: 5px;
     width: max(20vw, 200px);
     box-shadow: var(--box-shadow);
@@ -124,39 +129,19 @@ legend{
 
 li {
     text-align: center;
+    padding: 0.4em;
 }
 
-.modal{
-    border: 1px solid black;
-    justify-content: center;
-    align-items: center;
-    margin: 5px 15px;
-    border-radius: 5px;
-    box-shadow: var(--box-shadow);
-    z-index: 1;
-    position:relative;
-    z-index: 1;
-    top: 1%;
-    left: 25%;
-    background-color: whitesmoke;
-    width: 250px;
-    height: 150px;
-}
-
-.modal-text {
-    margin: 5px;
-    padding: 5px;   
-}
-
-.close-button{
-    float: right;
-}
-
-.modal-hide{
-    display: none;
+fieldset {
+    border-style: none;
+    padding: 1.5em;
 }
 
 button {
     padding: 10px;
     margin: 5px;
+}
+
+span {
+    padding: 0px 20px;
 }
