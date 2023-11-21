@@ -160,3 +160,18 @@ button {
     padding: 10px;
     margin: 5px;
 }
+
+.credits{
+    position: absolute;
+    left: 45%;
+    top: 5%;
+    width: 237px;
+    text-align: center;
+
+    /* left: 59%;; */
+}
+
+.credits,
+.credits a {
+    color: white;
+}
