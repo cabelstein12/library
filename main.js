@@ -74,7 +74,7 @@ function addBookInfo(index) {
         addBookInfo(index);
         setTimeout(() => {
             document.querySelector('.card').classList.toggle('card-rotate');
-        }, "1200");
+        }, "600");
 
     })
     
