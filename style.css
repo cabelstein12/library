@@ -132,6 +132,15 @@ li {
     padding: 0.4em;
 }
 
+a{
+    text-decoration: none;
+    color: rgb(75, 75, 75);
+}
+
+a:hover {
+    color: black;
+}
+
 fieldset {
     border-style: none;
     padding: 1.5em;
@@ -144,4 +153,12 @@ button {
 
 span {
     padding: 0px 20px;
+}
+
+#read-status {
+    width: 120px;
+    height: 35px;
+    background-color: rgb(255, 157, 0);
+    padding: 0;
+    margin: 0;
 }

@@ -46,6 +46,7 @@ function addBookToSidebar(index){
     bookLink.textContent = myLibrary[index].title;
     bookLink.addEventListener('click', () => {
         addBookInfo(index);
+        // getClass();
         card.classList.toggle('card-rotate');
     });
     
@@ -57,16 +58,27 @@ document.querySelector('.add-new-book').addEventListener('click', () => {
     document.querySelector('.card').classList.toggle('card-rotate');
 })
 
+
 function addBookInfo(index) {
     const title = document.querySelector('.book-title');
     const author = document.querySelector('.book-author');
     const genre = document.querySelector('.book-genre');
     const status = document.querySelector('.book-status');
-
+    
     title.textContent = `Title: ${myLibrary[index].title}`;
     author.textContent = `Author: ${myLibrary[index].author}`;
     genre.textContent = `Genre: ${myLibrary[index].genre}`;
     status.textContent = `Status: ${myLibrary[index].status}`;
+    document.querySelector('#read-status').addEventListener('click', function(){
+        toggleReadStatus(index);
+        addBookInfo(index);
+        setTimeout(() => {
+            document.querySelector('.card').classList.toggle('card-rotate');
+        }, "1200");
+
+    })
+    
+    
 }
 
 function deleteBook(index){
@@ -89,9 +101,7 @@ function toggleReadStatus(index){
     } else {
         myLibrary[index].status = 'Read';
     }
-    let statusLink = document.getElementById(index)
-    statusLink.remove();
-    createBookModal(index);
+    // document.querySelector('.card').style.transform = 'rotateY(180deg)';
 }
 
 const bookForm = document.getElementById('book-form');
