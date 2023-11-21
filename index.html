@@ -8,34 +8,52 @@
     <script src="./main.js" defer></script>
 </head>
 <body>
-    <div class="new-book-container">
-        <form action="#" method="POST" id="book-form">
-            <fieldset class="new-book">
-                <legend><h1>Add Book</h1></legend>
-                    <label for="title">Book Title:</label>
-                    <input type="text" name="title" id="title" required>
-
-                    <label for="author">Author:</label>
-                    <input type="text" name="author" id="author"  required>
-
-                    <label for="genre">Genre:</label>
-                    <input type="text" name="genre" id="genre">
-                    <div id="status">Book Status:</div>
-                    
-                    <div class="status-container">
-                    <input type="radio" name="status" id="read" value="Read">
-                    <label for="read">Read</label>
-                    <input type="radio" name="status" id="unread" value="Uread">
-                    <label for="unread">Unread</label>
-                </div>
-                <button type="submit">Add Book</button>  
-            </fieldset>
-        </form>
-
+    <div class="container">
+        <div class="card">
+            <div class="new-book-container front">
+                <form action="#" method="POST" id="book-form">
+                    <fieldset class="new-book">
+                        <legend><h1>Add Book</h1></legend>
+                            <label for="title">Book Title:</label>
+                            <input type="text" name="title" id="title" required>
+                            <label for="author">Author:</label>
+                            <input type="text" name="author" id="author"  required>
+                            <label for="genre">Genre:</label>
+                            <input type="text" name="genre" id="genre">
+                            <div id="status">Book Status:</div>
+        
+                            <div class="status-container">
+                            <span class="read">
+                                <input type="radio" name="status" id="read" value="Read">
+                                <label for="read">Read</label>
+                            </span>
+                            <span class="unread">
+                                <input type="radio" name="status" id="unread" value="Uread">
+                                <label for="unread">Unread</label>
+                            </span>
+                        </div>
+                        <button type="submit">Add Book</button>
+                    </fieldset>
+                </form>
+            </div>
+            <div class="book-info back">
+                <h1>Book Info</h1>
+                <p class="book-title">Title:</p>
+                <p class="book-author">Author:</p>
+                <p class="book-genre">Genre:</p>
+                <p class="book-status">Status:</p>
+                <button id="read-status">Change Status</button>
+                <button class="add-new-book">Add Another Book</button>
+        
+            </div>
+        </div>
     </div>
     <div class="side-bar">
         <h1 class="book-list-header">Book List</h1>
         <ul class="book-list"></ul>
+    </div>
+    <div class="credits">
+        Photo by <a href="https://unsplash.com/@izzuddindanial">Zaini Izzuddin</a>
     </div>
     <div class="credits">
         Photo by <a href="https://unsplash.com/@izzuddindanial">Zaini Izzuddin</a>
