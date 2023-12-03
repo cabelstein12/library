@@ -177,16 +177,22 @@ button {
     margin: 5px;
 }
 
+
 span {
     padding: 0px 20px;
 }
 
-#read-status {
-    width: 120px;
+#read-status,
+#delete-book {
+    width: 95px;
     height: 35px;
-    background-color: rgb(255, 157, 0);
+    font-size: small;
+    background-color: rgb(255, 175, 45);
     padding: 0;
-    margin: 0;
+    margin: 0px 3px;
+}
+#delete-book{
+    background-color: rgb(255, 84, 84);
 }
 
 .credits{

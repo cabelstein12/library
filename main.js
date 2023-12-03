@@ -1,25 +1,43 @@
 const myLibrary = [];
 
+
+
+myLibrary.forEach(( _,index) => {
+    addBookToSidebar(index);
+})
+
+// function Book(title, author, genre, status){
+//     this.title = title;
+//     this.author = author;
+//     this.genre = genre;
+//     this.status = status;
+// }
+
+class Book{
+    constructor(title, author, genre, status){
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+        this.status = status;
+    }
+}
+
+//sample books
+
 let grapesOfWrath = new Book('The Grapes of Wrath', 'John Steinbeck', 'Fiction', 'Read');
 let creativityInc = new Book('Creativity Inc.', 'Ed Catmull', 'Non-Fiction', 'Read');
 let snowCrash = new Book('Snow Crash', 'Neil Stephenson', 'Fiction', 'Read');
-let lawsOfPower = new Book('48 Laws of Power', 'Robert Greene', 'Non-Fiction', 'Unread');
+let lawsOfPower = new Book('Siddhartha', 'Hermann Hesse', 'Fiction', 'Unread');
 
 myLibrary.push(grapesOfWrath);
 myLibrary.push(creativityInc);
 myLibrary.push(snowCrash);
 myLibrary.push(lawsOfPower);
 
-myLibrary.forEach(( _,index) => {
-    addBookToSidebar(index);
-})
-
-function Book(title, author, genre, status){
-    this.title = title;
-    this.author = author;
-    this.genre = genre;
-    this.status = status;
+for(let i = 0 ; i < myLibrary.length; i++){
+    addBookToSidebar(i);
 }
+
 
 function submitForm(e){
     e.preventDefault();
@@ -77,9 +95,12 @@ function addBookInfo(index) {
             document.querySelector('.card').classList.toggle('card-rotate');
         }, "600");
     })
-   
-    
-    
+    document.querySelector('#delete-book').addEventListener('click', function(){
+        deleteBook(index);
+        setTimeout(() => {
+            document.querySelector('.card').classList.toggle('card-rotate');
+        }, "450");
+    })
 }
 
 function deleteBook(index){
